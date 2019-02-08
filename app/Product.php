@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function price_special()
+    public function price_specials()
     {
         /**
          * Accessing child price_specials table in the code
@@ -15,13 +15,22 @@ class Product extends Model
         return $this->hasMany('App/Price_special');
     }
 
-    public function price_group()
+    public function price_groups()
     {
         /**
          * Accessing child price_groups table in the code
          * optionally in case to make easier records fetching in the future
          */
         return $this->hasMany('App/Price_group');
+    }
+
+    public function product_displays()
+    {
+        /**
+         * Accessing child price_groups table in the code
+         * optionally in case to make easier records fetching in the future
+         */
+        return $this->hasMany('App/Product_display');
     }
 
     public function files()
@@ -71,5 +80,13 @@ class Product extends Model
     public function medias()
     {
         return $this->hasMany('App/Media');
+    }
+
+    function similiar_products(){
+        return $this-belongsToMany('App/Product','related_products','product_id','related_product_id') ;    
+    }   
+
+    function parent_similiar_products(){
+     return $this-belongsToMany('App/Product','related_products','related_product_id','product_id') ;    
     }
 }
