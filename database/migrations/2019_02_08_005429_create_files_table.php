@@ -14,11 +14,11 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned() ;
-            $table->string('path') ;
-            $table->string('caption') ;
-            $table->integer('sort_order') ;
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index() ; // increments type generate unsigned integer!
+            $table->string('path')->nullable() ;
+            $table->string('caption')->nullable() ;
+            $table->integer('sort_order')->default(0) ;
             $table->timestamps();
             // set foreign keys up
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

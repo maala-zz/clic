@@ -14,13 +14,13 @@ class CreateMediaTable extends Migration
     public function up()
     {
         Schema::create('media', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('type');
-            $table->string('path');
-            $table->string('caption');
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->integer('type')->default(-1); // indifferent value!
+            $table->string('path')->nullable();
+            $table->string('caption')->nullable();
             $table->boolean('main_photo')->default(false);
-            $table->integer('sort_order');
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade') ;
         });

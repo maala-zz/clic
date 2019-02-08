@@ -14,9 +14,9 @@ class CreateProductDisplaysTable extends Migration
     public function up()
     {
         Schema::create('product_displays', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->mediumText('content');
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->mediumText('content')->nullable();
             $table->timestamps();
              // set foreign keys up
              $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

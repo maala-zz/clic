@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelatedProductsTable extends Migration
+class CreateSimilarProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRelatedProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('related_products', function (Blueprint $table) {
+        Schema::create('similar_product', function (Blueprint $table) {
             $table->integer('product_id')->unsigned()->index() ;
-            $table->integer('related_product_id')->unsigned()->index() ; // increments type generate unsigned integer!
+            $table->integer('similar_product_id')->unsigned()->index() ;
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('related_product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('similar_product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRelatedProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('related_products');
+        Schema::dropIfExists('similar_product');
     }
 }

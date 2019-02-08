@@ -14,9 +14,9 @@ class CreateTagProductTable extends Migration
     public function up()
     {
         Schema::create('tag_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->integer('tag_id')->unsigned()->index(); // increments type generate unsigned integer!
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');

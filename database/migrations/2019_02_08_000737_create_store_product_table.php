@@ -14,9 +14,9 @@ class CreateStoreProductTable extends Migration
     public function up()
     {
         Schema::create('store_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('store_id')->unsigned();
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->integer('store_id')->unsigned(); // increments type generate unsigned integer!
             $table->timestamps();
               // set foreign keys up
               $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade') ;

@@ -14,14 +14,14 @@ class CreatePriceGroupsTable extends Migration
     public function up()
     {
         Schema::create('price_groups', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->index();
             $table->integer('store_id');
             $table->integer('product_id')->unsigned(); // increments type generate unsigned integer!
-            $table->integer('members_group_id');
-            $table->integer('type');
-            $table->integer('value');
-            $table->integer('from_quantity');
-            $table->integer('to_quantity');
+            $table->integer('members_group_id')->default(-1); // indifferent value!
+            $table->integer('type')->default(-1); // indifferent value!
+            $table->integer('value')->default(0);
+            $table->integer('from_quantity')->default(0);
+            $table->integer('to_quantity')->default(0);
             $table->timestamps();
             // set foreign keys options
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade') ;

@@ -14,9 +14,9 @@ class CreateSupplierProductTable extends Migration
     public function up()
     {
         Schema::create('supplier_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('supplier_id')->unsigned();
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->integer('supplier_id')->unsigned()->index(); // increments type generate unsigned integer!
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade') ;
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade') ;

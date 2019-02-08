@@ -14,14 +14,14 @@ class CreateQuantityInfosTable extends Migration
     public function up()
     {
         Schema::create('quantity_infos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
             $table->integer("min_qty_allowed")->default(0);
             $table->integer("max_qty_allowed")->default(0);
             $table->integer("out_of_stock_threshold")->default(0);
             $table->integer("stock_status")->default(1);
             $table->boolean("notify_for_quantity")->default(true);
-            $table->integer("quantity_to_notify")->default(0);
+            $table->integer("quantity_to_notify")->default(-1); // indifferent value!
             $table->boolean("sell_in_box")->default(false);
             $table->integer("items_per_box")->default(0);
             $table->boolean("allow_requesting_when_product_out_of_stock")->default(false);

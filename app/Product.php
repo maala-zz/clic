@@ -12,7 +12,7 @@ class Product extends Model
          * Accessing child price_specials table in the code
          * optionally in case to make easier records fetching in the future
          */
-        return $this->hasMany('App/Price_special');
+        return $this->hasOne('App/Price_special');
     }
 
     public function price_groups()
@@ -82,11 +82,19 @@ class Product extends Model
         return $this->hasMany('App/Media');
     }
 
-    function similiar_products(){
+    function related_products(){
         return $this-belongsToMany('App/Product','related_products','product_id','related_product_id') ;    
     }   
 
-    function parent_similiar_products(){
+    function parent_related_products(){
      return $this-belongsToMany('App/Product','related_products','related_product_id','product_id') ;    
+    }
+
+    function similar_products(){
+        return $this-belongsToMany('App/Product','similar_product','product_id','similar_product_id') ;    
+    }   
+
+    function parent_similar_products(){
+     return $this-belongsToMany('App/Product','similar_product','similar_product_id','product_id') ;    
     }
 }

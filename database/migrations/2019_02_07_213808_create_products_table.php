@@ -14,21 +14,24 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name') ;
-            $table->string('sku') ;
-            $table->boolean('active') ;
-            $table->integer('current_price') ;
-            $table->integer('old_price') ;
-            $table->integer('quantity') ;
-            $table->integer('unlimited_quantity') ;
-            $table->integer('tax_type') ;
-            $table->text('brief') ;
-            $table->text('description') ;
-            $table->string('url') ;
-            $table->string('meta_title', 50) ;
-            $table->string('meta_description') ;
-            $table->string('meta_keywords') ;
+            $table->increments('id')->index();
+            /**
+             *  nullable for some values just to make it easier to test the database! 
+             */
+            $table->string('name')->nullable() ;
+            $table->string('sku')->nullable() ;
+            $table->boolean('active')->default(false) ;
+            $table->double('current_price',15,5)->default(0.0) ;
+            $table->double('old_price',15,5)->default(0.0) ;
+            $table->integer('quantity')->default(0) ;
+            $table->integer('unlimited_quantity')->default(0) ;
+            $table->integer('tax_type')->default(0) ;
+            $table->text('brief')->nullable() ;
+            $table->text('description')->nullable() ;
+            $table->string('url')->nullable() ;
+            $table->string('meta_title', 50)->nullable() ;
+            $table->string('meta_description')->nullable() ;
+            $table->string('meta_keywords')->nullable() ;
             $table->timestamps();
         });
     }

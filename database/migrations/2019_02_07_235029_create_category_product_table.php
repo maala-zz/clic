@@ -15,9 +15,9 @@ class CreateCategoryProductTable extends Migration
     {
         // pivot table as many to many relationship betwen products and catigories
         Schema::create('category_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->increments('id')->index();
+            $table->integer('product_id')->unsigned()->index(); // increments type generate unsigned integer!
+            $table->integer('category_id')->unsigned()->index(); // increments type generate unsigned integer!
             $table->timestamps();
             // set foreign keys up
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade') ;
