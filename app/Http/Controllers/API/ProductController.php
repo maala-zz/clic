@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product ;
+use App\Price_group ;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,11 @@ class ProductController extends Controller
         $product->current_price = $request->input('currentPrice') ;
         $product->old_price = $request->input('oldPrice') ;
         $product->save() ;
-        return response()->json([$product]) ;
+        // new product with new price_group, just for testing Eloquent
+        $price_group = new Price_group ;
+        $price_group->store_id = $request->input('storeId') ;
+        $res = $product->price_groups()->save($price_group) ;
+        return response()->json([$res]) ;
     }
 
     /**

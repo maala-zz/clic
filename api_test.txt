@@ -5,7 +5,8 @@ content-type: application/json
 "name" : "productFromHttpTest",
 "active" : true,
 "currentPrice" : 111.111,
-"oldPrice" : 222.111
+"oldPrice" : 222.111,
+"storeId" : 1
 }
 
 ###
