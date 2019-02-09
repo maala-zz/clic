@@ -15,6 +15,6 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 clone the project to your machine, make database with name "hilal_test" then run composer install , composer auto-load , php artisan serve --seed.
 the --seed option seeding the database from Seeders.
 
-## Run the project
+## issues
 
-during testing or seeding , in case of any erors or craches check the error and change localhost or port number because it's static in my code.
+during testing or seeding , in case of any eror or crash check the localhost or port number because it's static values in my code.
