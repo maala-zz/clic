@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(["type"=>"here is index"]) ;
     }
 
     /**
@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return response()->json(["type"=>"here is create"]) ;
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json(["type"=>"here is store"]) ;
     }
 
     /**
@@ -46,7 +46,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return response()->json(["type"=>"here is show"]) ;
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return response()->json(["type"=>"here is edit"]) ;
     }
 
     /**
@@ -69,7 +69,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        return response()->json(["type"=>"here is update"]) ;
     }
 
     /**
@@ -80,6 +80,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        return response()->json(["type"=>"here is destroy"]) ;
     }
 }

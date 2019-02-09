@@ -1,0 +1,31 @@
+POST http://127.0.0.1:8000/api/product HTTP/1.1
+content-type: application/json
+
+{
+"name" : "productFromHttpTest",
+"active" : true,
+"currentPrice" : 111.111,
+"oldPrice" : 222.111
+}
+
+###
+
+GET http://127.0.0.1:8000/api/product/2 HTTP/1.1
+
+
+###
+
+DELETE http://127.0.0.1:8000/api/product/15 HTTP/1.1
+
+###
+
+GET http://127.0.0.1:8000/api/product HTTP/1.1
+
+###
+
+PUT http://127.0.0.1:8000/api/product/15 HTTP/1.1
+content-type: application/json
+
+{
+"newName" : "newNameTest"
+}
